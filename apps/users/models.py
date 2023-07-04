@@ -8,6 +8,13 @@ from apps.common.models import BaseModel
 from .managers import UserManager
 
 
+class AUTH_PROVIDERS_TYPE(models.TextChoices):
+    FACEBOOK = "facebook", _("Facebook")
+    GOOGLE = "google", _("Google")
+    TWITTER = "twitter", _("Twitter")
+    EMAIL = "email", _("Email")
+
+
 class User(AbstractUser, BaseModel):
     full_name = models.CharField(_("Full Name"), max_length=255, null=True, blank=True)
     username = None
@@ -15,6 +22,9 @@ class User(AbstractUser, BaseModel):
     email = models.EmailField(_("Email"), max_length=255, unique=True)
     faculty = models.CharField(_("Faculty"), max_length=255)
     course = models.CharField(_("Course"), max_length=255)
+    auth_provider = models.CharField(
+        max_length=255, choices=AUTH_PROVIDERS_TYPE.choices, default=AUTH_PROVIDERS_TYPE.EMAIL
+    )
 
     objects = UserManager()
     USERNAME_FIELD = "email"

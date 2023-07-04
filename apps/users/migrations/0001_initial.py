@@ -28,9 +28,7 @@ class Migration(migrations.Migration):
                 ("password", models.CharField(max_length=128, verbose_name="password")),
                 (
                     "last_login",
-                    models.DateTimeField(
-                        blank=True, null=True, verbose_name="last login"
-                    ),
+                    models.DateTimeField(blank=True, null=True, verbose_name="last login"),
                 ),
                 (
                     "is_superuser",
@@ -42,15 +40,11 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "first_name",
-                    models.CharField(
-                        blank=True, max_length=150, verbose_name="first name"
-                    ),
+                    models.CharField(blank=True, max_length=150, verbose_name="first name"),
                 ),
                 (
                     "last_name",
-                    models.CharField(
-                        blank=True, max_length=150, verbose_name="last name"
-                    ),
+                    models.CharField(blank=True, max_length=150, verbose_name="last name"),
                 ),
                 (
                     "is_staff",
@@ -70,9 +64,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "date_joined",
-                    models.DateTimeField(
-                        default=django.utils.timezone.now, verbose_name="date joined"
-                    ),
+                    models.DateTimeField(default=django.utils.timezone.now, verbose_name="date joined"),
                 ),
                 (
                     "created_at",
@@ -84,21 +76,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "full_name",
-                    models.CharField(
-                        blank=True, max_length=255, null=True, verbose_name="Full Name"
-                    ),
+                    models.CharField(blank=True, max_length=255, null=True, verbose_name="Full Name"),
                 ),
                 (
                     "phone",
-                    models.CharField(
-                        blank=True, max_length=14, null=True, verbose_name="Phone"
-                    ),
+                    models.CharField(blank=True, max_length=14, null=True, verbose_name="Phone"),
                 ),
                 (
                     "email",
-                    models.EmailField(
-                        max_length=255, unique=True, verbose_name="Email"
-                    ),
+                    models.EmailField(max_length=255, unique=True, verbose_name="Email"),
                 ),
                 ("faculty", models.CharField(max_length=255, verbose_name="Faculty")),
                 ("course", models.CharField(max_length=255, verbose_name="Course")),
