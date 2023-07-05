@@ -20,4 +20,4 @@ class FacebookSocialAuthView(GenericAPIView):
         return Response(data, status=status.HTTP_200_OK)
 
 
-__all__ = ['FacebookSocialAuthView']
+__all__ = ["FacebookSocialAuthView"]

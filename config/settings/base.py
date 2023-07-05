@@ -21,6 +21,8 @@ ALLOWED_HOSTS = ["*"]
 LOCAL_APPS = [
     "apps.users.apps.UsersConfig",
     "apps.common.apps.CommonConfig",
+    "apps.sponsor.apps.SponsorConfig",
+    "apps.student.apps.StudentConfig",
 ]
 THIRD_PARTY_APPS = [
     "rest_framework",

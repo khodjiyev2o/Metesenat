@@ -9,6 +9,7 @@ from .swagger import swaggerurlpatterns
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/users/", include("apps.users.urls")),
+    path("api/sponsor/", include("apps.sponsor.urls")),
     path("api/social_auth/", include("apps.social_auth.urls")),
 ]
 
