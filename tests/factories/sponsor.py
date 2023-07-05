@@ -8,11 +8,11 @@ class SponsorFactory(factory.django.DjangoModelFactory):
         model = Sponsor
 
     user = factory.SubFactory("tests.factories.user.UserFactory")
-    type = factory.Iterator(SponsorType.choices)
+    type = SponsorType.INDIVIDUAL
     status = SponsorStatus.IN_MODERATION
     company = factory.Faker("company")
     amount = factory.Faker("pyint", min_value=1000)
-    payment_type = factory.Iterator(Payment.choices)
+    payment_type = Payment.CASH
     comment = factory.Faker("text")
 
 

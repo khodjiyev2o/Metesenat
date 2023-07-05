@@ -8,9 +8,9 @@ class StudentFactory(factory.django.DjangoModelFactory):
         model = Student
 
     user = factory.SubFactory("tests.factories.user.UserFactory")
-    type = factory.Iterator(StudentType.choices)
+    type = StudentType.BACHELOR
     university = factory.SubFactory("tests.factories.university.UniversityFactory")
-    tuition_fee = factory.Faker("pyint")
+    tuition_fee = factory.Faker("pyint",)
 
 
 __all__ = ["StudentFactory"]
