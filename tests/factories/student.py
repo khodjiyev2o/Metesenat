@@ -4,7 +4,6 @@ from apps.student.models import Student, StudentType
 
 
 class StudentFactory(factory.django.DjangoModelFactory):
-
     class Meta:
         model = Student
 

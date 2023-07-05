@@ -11,4 +11,4 @@ class SponsorRegisterView(CreateAPIView):
     serializer_class = SponsorRegisterSerializer
 
 
-__all__ = ['SponsorRegisterView']
+__all__ = ["SponsorRegisterView"]

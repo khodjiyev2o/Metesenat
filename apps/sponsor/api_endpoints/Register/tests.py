@@ -1,16 +1,15 @@
 import pytest
 from django.urls import reverse
 from rest_framework import status
-from apps.sponsor.models import Sponsor, Payment, SponsorType
+
+from apps.sponsor.models import Payment, Sponsor, SponsorType
+
 
 @pytest.mark.django_db
 def test_sponsor_register(client):
-    url = reverse('sponsor-register')
+    url = reverse("sponsor-register")
     payload = {
-        "user": {
-            "phone": "+998913665113",
-            "full_name": "Samandar Hojiev"
-        },
+        "user": {"phone": "+998913665113", "full_name": "Samandar Hojiev"},
         "type": SponsorType.LEGAL,
         "company": "UIC GROUP",
         "amount": 100000,

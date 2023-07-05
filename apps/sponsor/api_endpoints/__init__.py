@@ -1,1 +1,1 @@
-from .Register import * # noqa
+from .Register import *  # noqa

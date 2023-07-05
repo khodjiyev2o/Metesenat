@@ -11,4 +11,3 @@ class UniversityFactory(factory.django.DjangoModelFactory):
 
 
 __all__ = ["UniversityFactory"]
-
