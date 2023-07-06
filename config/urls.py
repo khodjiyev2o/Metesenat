@@ -13,6 +13,7 @@ urlpatterns = [
     path("api/dashboard/", DashboardStatisticsView.as_view(), name="dashboard-statistics"),
     path("api/users/", include("apps.users.urls")),
     path("api/sponsor/", include("apps.sponsor.urls")),
+    path("api/student/", include("apps.student.urls")),
     path("api/social_auth/", include("apps.social_auth.urls")),
 ]
 

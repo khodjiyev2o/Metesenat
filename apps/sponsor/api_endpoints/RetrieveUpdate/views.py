@@ -1,7 +1,10 @@
 from rest_framework.generics import RetrieveUpdateAPIView
-from apps.sponsor.api_endpoints.RetrieveUpdate.serializers import SponsorDetailUpdateSerializer
-from apps.sponsor.models import Sponsor
 from rest_framework.permissions import IsAdminUser
+
+from apps.sponsor.api_endpoints.RetrieveUpdate.serializers import (
+    SponsorDetailUpdateSerializer,
+)
+from apps.sponsor.models import Sponsor
 
 
 class SponsorDetailUpdateView(RetrieveUpdateAPIView):
@@ -10,4 +13,4 @@ class SponsorDetailUpdateView(RetrieveUpdateAPIView):
     permission_classes = [IsAdminUser]
 
 
-__all__ = ['SponsorDetailUpdateView']
+__all__ = ["SponsorDetailUpdateView"]

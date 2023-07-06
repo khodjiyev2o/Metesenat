@@ -10,7 +10,9 @@ class StudentFactory(factory.django.DjangoModelFactory):
     user = factory.SubFactory("tests.factories.user.UserFactory")
     type = StudentType.BACHELOR
     university = factory.SubFactory("tests.factories.university.UniversityFactory")
-    tuition_fee = factory.Faker("pyint",)
+    tuition_fee = factory.Faker(
+        "pyint",
+    )
 
 
 __all__ = ["StudentFactory"]

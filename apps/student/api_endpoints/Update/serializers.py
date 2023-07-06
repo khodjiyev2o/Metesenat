@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.sponsor.models import Sponsor
+from apps.student.models import Student
 from apps.users.models import User
 
 
@@ -10,12 +10,12 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ("full_name", "phone")
 
 
-class SponsorDetailUpdateSerializer(serializers.ModelSerializer):
+class StudentUpdateSerializer(serializers.ModelSerializer):
     user = UserSerializer()
 
     class Meta:
-        model = Sponsor
-        fields = ("id", "user", "amount", "created_at", "status", "type", "company", "payment_type")
+        model = Student
+        fields = ("id", "user", "type", "university", "tuition_fee")
         extra_kwargs = {"id": {"read_only": True}}
 
     def update(self, instance, validated_data):

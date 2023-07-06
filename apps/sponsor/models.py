@@ -1,7 +1,9 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.common.models import BaseModel
+from apps.student.models import Student
 from apps.users.models import User
 
 
@@ -35,6 +37,35 @@ class Sponsor(BaseModel):
     def __str__(self):
         return self.user.full_name
 
+    @property
+    def left_money(self):
+        sponsored_amount = self.sponsorships.aggregate(amount=models.Sum("amount"))["amount"] or 0
+        return self.amount - sponsored_amount
+
     class Meta:
         verbose_name = _("Sponsor")
         verbose_name_plural = _("Sponsors")
+
+
+class SponsorShip(BaseModel):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, verbose_name=_("Student"), related_name="sponsors")
+    sponsor = models.ForeignKey(
+        Sponsor, on_delete=models.CASCADE, verbose_name=_("Sponsor"), related_name="sponsorships"
+    )
+    amount = models.PositiveIntegerField(default=1000, verbose_name=_("Amount of Money"))
+
+    def __str__(self):
+        return f"{self.sponsor.user.full_name} sponsored to {self.student.user.full_name}"
+
+    def clean(self):
+        """Check if there is enough money of sponsor to donate"""
+        if self.sponsor.left_money < self.amount:
+            raise ValidationError(_("Sorry, sponsor does not have enough money"))
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = _("Sponsorship")
+        verbose_name_plural = _("Sponsorships")

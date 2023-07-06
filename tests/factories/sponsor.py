@@ -1,6 +1,12 @@
 import factory
 
-from apps.sponsor.models import Payment, Sponsor, SponsorStatus, SponsorType
+from apps.sponsor.models import (
+    Payment,
+    Sponsor,
+    SponsorShip,
+    SponsorStatus,
+    SponsorType,
+)
 
 
 class SponsorFactory(factory.django.DjangoModelFactory):
@@ -16,4 +22,12 @@ class SponsorFactory(factory.django.DjangoModelFactory):
     comment = factory.Faker("text")
 
 
-__all__ = ["SponsorFactory"]
+class SponsorShipFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = SponsorShip
+
+    sponsor = factory.SubFactory("tests.factories.sponsor.SponsorFactory")
+    student = factory.SubFactory("tests.factories.student.StudentFactory")
+
+
+__all__ = ["SponsorFactory", "SponsorShipFactory"]
